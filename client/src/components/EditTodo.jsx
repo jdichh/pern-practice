@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import EditModal from "./EditModal";
 
-const EditTodo = () => {
+const EditTodo = ({ item }) => {
   const [showEdit, setShowEdit] = useState(false);
+
   return (
     <>
-      <button className="p-2 mx-1 my-1 bg-sky-800 rounded-sm" onClick={() => setShowEdit(true)}>
+      <button
+        className="p-2 mx-1 my-1 bg-sky-800 rounded-sm"
+        onClick={() => setShowEdit(true)}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -21,7 +25,11 @@ const EditTodo = () => {
           />
         </svg>
       </button>
-      <EditModal onClose={() => setShowEdit(false)} isVisible={showEdit}/>
+      <EditModal
+        onClose={() => setShowEdit(false)}
+        isVisible={showEdit}
+        item={item}
+      />
     </>
   );
 };

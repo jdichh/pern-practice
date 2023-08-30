@@ -1,7 +1,6 @@
 import React, { createContext, useState } from "react";
 import InputTodo from "./components/InputTodo";
 import ListTodo from "./components/ListTodo";
-import EditTodo from "./components/EditTodo";
 export const TodoItemContext = createContext();
 
 const App = () => {

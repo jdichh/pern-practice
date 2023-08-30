@@ -44,7 +44,7 @@ const ListTodo = () => {
               <tr key={item.id}>
                 <td className="border-2">{item.text}</td>
                 <td className="border-2 w-2/12">
-                  <EditTodo/>
+                  <EditTodo item={item}/>
                   <button
                     className="p-2 mx-1 bg-red-800 rounded-sm"
                     onClick={() => deleteItem(item.id)}

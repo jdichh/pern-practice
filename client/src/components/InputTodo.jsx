@@ -13,14 +13,13 @@ const InputTodo = () => {
   } = useForm();
 
   const submitData = async (data, e) => {
-    e.preventDefault();
     try {
-      const inputRes = await fetch("http://localhost:4000/todos", {
+      const response = await fetch("http://localhost:4000/todos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      const newItem = await inputRes.json(); 
+      const newItem = await response.json(); 
       setItems([...items, newItem]);
       reset();
     } catch (error) {
@@ -30,14 +29,13 @@ const InputTodo = () => {
 
   return (
     <>
-      <div className="flex flex-col w-5/12 justify-center mb-12 mt-12">
-        <div>
+      <div className="flex flex-col w-5/12 justify-center mb-12 mt-36">
           <h1 className="text-center text-3xl">Activity Logger</h1>
           <form onSubmit={handleSubmit(submitData)}>
             <input
               type="text"
               placeholder="What's on your list today?"
-              className="w-10/12 border my-2 mx-2 py-2 px-3 rounded-sm"
+              className="w-10/12 border my-2 mx-2 p-2 rounded-sm"
               {...register("text", { required: true })}
               aria-label="Enter a to-do item in this field."
             />
@@ -54,7 +52,6 @@ const InputTodo = () => {
               </div>
             )}
           </form>
-        </div>
       </div>
     </>
   );
