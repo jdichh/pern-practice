@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* styling not final */
+
+:root {
+  --bg-color: #F2F2F2;
+  --primary: #006699;
+  --secondary: #6D9EEB;
+  font-family: 'Raleway', sans-serif;
+}
+
+html,
+body {
+  background: var(--bg-color);
+}
+
+input {
+    @apply w-9/12 border my-2 mx-2 py-2 px-3 rounded-md;
+}
+
+button {
+    transition: 0.15s ease-in-out;
+}
+
+button.buttons {
+    @apply bg-gray-300 px-4 py-2 rounded-md;
+    background: var(--primary);
+    color: var(--bg-color);
+}
+
+button.buttons:hover {
+    background: var(--secondary);
+}
