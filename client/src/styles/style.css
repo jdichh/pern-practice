@@ -7,7 +7,7 @@
 
 :root {
   --bg-color: #F2F2F2;
-  --primary: #006699;
+  --primary: #075985;
   --secondary: #6D9EEB;
   font-family: 'Raleway', sans-serif;
 }
@@ -17,8 +17,6 @@ body {
   background: var(--bg-color);
 }
 
-
-
 button {
     transition: 0.15s ease-in-out;
 }
@@ -26,8 +24,4 @@ button {
 button.buttons {
     background: var(--primary);
     color: var(--bg-color);
-}
-
-button.buttons:hover {
-    background: var(--secondary);
 }

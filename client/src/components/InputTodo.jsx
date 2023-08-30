@@ -35,7 +35,7 @@ const InputTodo = () => {
             />
             <button
               type="submit"
-              className="buttons bg-gray-300 px-6 py-2 rounded-sm;"
+              className="buttons px-6 py-2 rounded-sm;"
               aria-label="Add to-do item button."
             >
               Add
