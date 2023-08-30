@@ -5,9 +5,8 @@ const ListTodo = () => {
 
   const getItems = async () => {
     try {
-      const response = await fetch("http://localhost:4000/todos");
-      const data = await response.json();
-
+      const getData = await fetch("http://localhost:4000/todos");
+      const data = await getData.json();
       setItems(data);
     } catch (error) {
       console.error(error.message);
@@ -17,6 +16,17 @@ const ListTodo = () => {
   useEffect(() => {
     getItems();
   }, []);
+
+  const deleteItem = async (id) => {
+    try {
+      await fetch(`http://localhost:4000/todos/${id}`, {
+        method: "DELETE",
+      });
+      setItems(items.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   return (
     <>
@@ -51,7 +61,10 @@ const ListTodo = () => {
                     />
                   </svg>
                 </button>
-                <button className="p-2 mx-1 bg-red-800 rounded-sm">
+                <button
+                  className="p-2 mx-1 bg-red-800 rounded-sm"
+                  onClick={() => deleteItem(item.id)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
