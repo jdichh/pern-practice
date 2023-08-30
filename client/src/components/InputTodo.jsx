@@ -30,12 +30,9 @@ const InputTodo = () => {
 
   return (
     <>
-      <div
-        style={{ outline: "1px solid red" }}
-        className="flex flex-col w-5/12 justify-center mb-12 mt-12"
-      >
+      <div className="flex flex-col w-5/12 justify-center mb-12 mt-12">
         <div>
-          <h1 className="text-center text-3xl">Activity Log</h1>
+          <h1 className="text-center text-3xl">Activity Logger</h1>
           <form onSubmit={handleSubmit(submitData)}>
             <input
               type="text"

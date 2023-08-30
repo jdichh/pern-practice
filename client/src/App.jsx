@@ -10,13 +10,9 @@ const App = () => {
   return (
     <>
       <TodoItemContext.Provider value={[items, setItems]}>
-        <main
-          style={{ outline: "1px solid red" }}
-          className="flex flex-col my-0 mx-auto w-9/12 items-center h-screen"
-        >
+        <main className="flex flex-col my-0 mx-auto w-9/12 items-center h-screen">
           <InputTodo />
           <ListTodo />
-          <EditTodo />
         </main>
       </TodoItemContext.Provider>
     </>

@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import EditTodo from "./EditTodo";
 import { TodoItemContext } from "../App";
 
 const ListTodo = () => {
@@ -31,37 +32,19 @@ const ListTodo = () => {
 
   return (
     <>
-      <table
-        className="table-auto w-6/12 mb-12"
-        style={{ outline: "1px solid red" }}
-      >
-        <thead>
-          <tr>
-            <th>Things To Do</th>
-            <th>Options</th>
+      <table className="table-auto w-6/12 mb-12 border-4">
+        <thead className="bg-sky-800">
+          <tr className="text-white">
+            <th className="font-light">Activities</th>
+            <th className="font-light">Options</th>
           </tr>
         </thead>
           <tbody className="text-center">
             {items.map((item) => (
               <tr key={item.id}>
-                <td style={{ outline: "1px solid red" }}>{item.text}</td>
-                <td style={{ outline: "1px solid red" }} className="w-2/12">
-                  <button className="p-2 mx-1 my-1 bg-sky-800 rounded-sm">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="#F2F2F2"
-                      className="w-5 h-5"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                      />
-                    </svg>
-                  </button>
+                <td className="border-2">{item.text}</td>
+                <td className="border-2 w-2/12">
+                  <EditTodo/>
                   <button
                     className="p-2 mx-1 bg-red-800 rounded-sm"
                     onClick={() => deleteItem(item.id)}
