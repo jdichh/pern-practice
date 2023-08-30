@@ -1,28 +1,39 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { TodoItemContext } from "../App";
 
 const InputTodo = () => {
+  const [items, setItems] = useContext(TodoItemContext)
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const submitData = async (data, e) => {
     e.preventDefault();
     try {
-      await fetch("http://localhost:4000/todos", {
+      const inputRes = await fetch("http://localhost:4000/todos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      const newItem = await inputRes.json(); 
+      setItems([...items, newItem]);
+      reset();
     } catch (error) {
       console.error(error.message);
     }
   };
+
   return (
     <>
-      <div style={{outline: "1px solid red"}} className="flex flex-col w-5/12 justify-center mb-12 mt-12">
+      <div
+        style={{ outline: "1px solid red" }}
+        className="flex flex-col w-5/12 justify-center mb-12 mt-12"
+      >
         <div>
           <h1 className="text-center text-3xl">Activity Log</h1>
           <form onSubmit={handleSubmit(submitData)}>
