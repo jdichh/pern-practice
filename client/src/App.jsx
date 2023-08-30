@@ -6,7 +6,7 @@ import EditTodo from "./components/EditTodo";
 const App = () => {
   return (
     <>
-      <main>
+      <main style={{outline: "1px solid red"}} className="flex flex-col my-0 mx-auto w-9/12 items-center h-screen">
         <InputTodo />
         <ListTodo />
         <EditTodo />

@@ -22,25 +22,28 @@ const InputTodo = () => {
   };
   return (
     <>
-      <div className="flex items-center justify-center grow">
-        <div className="p-10 mt-10">
-          <h1 className="text-4xl text-center mb-6">To-Dos</h1>
-          <form onSubmit={handleSubmit(submitData)} className="max-w-sm p-2">
+      <div style={{outline: "1px solid red"}} className="flex flex-col w-5/12 justify-center mb-12 mt-12">
+        <div>
+          <h1 className="text-center text-3xl">Activity Log</h1>
+          <form onSubmit={handleSubmit(submitData)}>
             <input
               type="text"
               placeholder="What's on your list today?"
+              className="w-10/12 border my-2 mx-2 py-2 px-3 rounded-sm"
               {...register("text", { required: true })}
               aria-label="Enter a to-do item in this field."
             />
             <button
               type="submit"
-              className="buttons"
+              className="buttons bg-gray-300 px-6 py-2 rounded-sm;"
               aria-label="Add to-do item button."
             >
               Add
             </button>
             {errors.text && (
-              <span className="text-center">The field cannot be empty.</span>
+              <div className="px-2">
+                <span>The field cannot be empty.</span>
+              </div>
             )}
           </form>
         </div>
