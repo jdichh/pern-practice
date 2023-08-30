@@ -1,0 +1,5 @@
+CREATE DATABASE todo_list;
+CREATE TABLE todos(
+    id SERIAL PRIMARY KEY,
+    text VARCHAR(255)
+);
