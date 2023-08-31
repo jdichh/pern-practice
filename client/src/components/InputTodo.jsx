@@ -19,8 +19,8 @@ const InputTodo = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      const newItem = await response.json(); 
-      setItems([...items, newItem]);
+      // const newItem = await response.json(); 
+      // setItems([...items, newItem]);
       reset();
     } catch (error) {
       console.error(error.message);

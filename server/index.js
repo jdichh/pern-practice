@@ -11,16 +11,19 @@ app.post("/todos", async (req, res) => {
     try {
         const { text } = req.body;
         const newItem = await pool.query("INSERT INTO todos (text) VALUES ($1) RETURNING *", [text]);
-        res.json(newItem.rows[0]);
+        const totalCount = await pool.query("SELECT COUNT(*) FROM todos");
+        res.json({ item: newItem.rows[0], totalCount: totalCount.rows[0].count });
     } catch (error) {
         console.log(error.messsage)
     }
 })
 
-// Retrieve all items
+// Retrieve all items with pagination
 app.get("/todos", async (req, res) => {
     try {
-        const getItems = await pool.query("SELECT * FROM todos");
+        const { page = 1, limit = 10} = req.query
+        const offset = (page - 1) * limit
+        const getItems = await pool.query("SELECT * FROM todos ORDER BY id LIMIT $1 OFFSET $2", [limit, offset]);
         res.json(getItems.rows)
     } catch (error) {
         console.log(error.messsage)
@@ -31,7 +34,7 @@ app.get("/todos", async (req, res) => {
 app.get("/todos/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const getOneItem = await pool.query("SELECT * FROM todos WHERE id = $1", [id])
+        const getOneItem = await pool.query("SELECT * FROM todos WHERE id = $1", [id]);
         res.json(getOneItem.rows[0]);
     } catch (error) {
         console.log(error.messsage)
